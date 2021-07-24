@@ -1,9 +1,9 @@
 import React from "react";
 
-const GlassesSVG = ({ w, fillColor }) => {
+const GlassesSVG = ({ h, fillColor }) => {
   return (
     <svg
-      className={`fill-current w-${w || "40"} text-${fillColor || "black"}`}
+      className={`fill-current h-${h || "40"} text-${fillColor || ""}`}
       viewBox="0 0 111.2898 48.1899"
     >
       <g>
