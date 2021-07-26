@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import StockItemDropdown from "./StockItemDropdown";
+import StockItemDropdown from "./StockItemDropdown/StockItemDropdown";
 
 const StoreStockItem = ({ flavor, desc, imgUrl, stock, _id }) => {
   const [expand, setExpand] = useState(false);
   const toggleExpand = () => setExpand(!expand);
   return (
     <div>
-      <div className="flex flex-grow items-center w-full bg-white px-4 py-2 rounded-md border border-black mt-2">
+      <div
+        className="flex flex-grow items-center w-full bg-white px-4 py-2 rounded-md border
+       border-black mt-2 cursor-pointer"
+        onClick={toggleExpand}
+      >
         <button className="inline" onClick={toggleExpand}>
           <svg
-            className="w-8"
+            className={`w-8 transition-transform duration-500 transform ${
+              expand && "rotate-180"
+            }`}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="#000000"
@@ -34,7 +40,7 @@ const StoreStockItem = ({ flavor, desc, imgUrl, stock, _id }) => {
           expand ? "h-40" : "h-0"
         } bg-gray-100 rounded-lg mx-0.5 transition-all duration-500 ease-out overflow-hidden`}
       >
-        <StockItemDropdown />
+        <StockItemDropdown imgUrl={imgUrl} desc={desc} _id={_id} />
       </div>
     </div>
   );

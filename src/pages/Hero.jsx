@@ -1,5 +1,5 @@
 import React from "react";
-import GlassesSVG from "./GlassesSVG";
+import GlassesSVG from "../components/GlassesSVG";
 
 const Hero = () => {
   return (
