@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import StockItemDropdown from "./StockItemDropdown";
 
-const StoreDorayaki = ({ flavor, desc, imgUrl, stock, _id }) => {
+const StoreStockItem = ({ flavor, desc, imgUrl, stock, _id }) => {
   const [expand, setExpand] = useState(false);
   const toggleExpand = () => setExpand(!expand);
   return (
@@ -39,4 +40,4 @@ const StoreDorayaki = ({ flavor, desc, imgUrl, stock, _id }) => {
   );
 };
 
-export default StoreDorayaki;
+export default StoreStockItem;

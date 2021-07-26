@@ -1,5 +1,5 @@
 import React from "react";
-import StoreDorayaki from "../components/StoreDorayaki";
+import StoreStockItem from "../components/StoreStockItem";
 const fetchedDorayaki = [
   {
     flavor: "ewwwww",
@@ -64,7 +64,7 @@ const StoreDetail = () => {
         <h2 className="text-xl font-bold">Stok Dorayaki</h2>
         <div className="flex flex-col">
           {fetchedDorayaki.map((dorayaki, index) => (
-            <StoreDorayaki
+            <StoreStockItem
               flavor={dorayaki.flavor}
               desc={dorayaki.desc}
               imgUrl={dorayaki.imgUrl}
