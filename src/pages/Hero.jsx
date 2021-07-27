@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import GlassesSVG from "../components/GlassesSVG";
 
 const Hero = () => {
@@ -6,7 +7,7 @@ const Hero = () => {
     <section className="bg-yellow-200 flow-root text-white py-20">
       <div className="flex relative -left-8 md:-left-32">
         <GlassesSVG h="52 lg:h-72" />
-        <p className="text-5xl lg:text-7xl my-auto font-bold ml-2 lg:ml-12">
+        <p className="text-5xl lg:text-7xl my-auto font-bold ml-2 lg:ml-12 underline">
           MOBITA
         </p>
       </div>
@@ -14,13 +15,19 @@ const Hero = () => {
         Welcome, Doraemonangis
       </h1>
       <div className="flex flex-col lg:flex-row justify-center mt-20 lg:mt-8">
-        <button className="mx-auto lg:mx-0 bg-yellow-600 p-2 rounded-xl text-md lg:text-xl hover:bg-yellow-500 transition font-semibold">
+        <Link
+          to="/stores"
+          className="mx-auto lg:mx-0 bg-yellow-600 p-2 rounded-xl text-md lg:text-xl hover:bg-yellow-500 transition font-semibold"
+        >
           Manage Stores
-        </button>
+        </Link>
         <span className="mx-4 my-2"></span>
-        <button className="mx-auto lg:mx-0 bg-yellow-600 p-2 rounded-xl text-md lg:text-xl hover:bg-yellow-500 transition font-semibold">
+        <Link
+          to="/dorayaki"
+          className="mx-auto lg:mx-0 bg-yellow-600 p-2 rounded-xl text-md lg:text-xl hover:bg-yellow-500 transition font-semibold"
+        >
           Manage Dorayaki
-        </button>
+        </Link>
       </div>
     </section>
   );
