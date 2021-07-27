@@ -1,5 +1,6 @@
 import React from "react";
 import DorayakiCard from "../components/DorayakiCard";
+import ContentWrapper from "../components/ContentWrapper";
 
 const dummyDorayaki = [
   {
@@ -56,7 +57,7 @@ const dummyDorayaki = [
 const AllDorayakiPage = () => {
   const fetchedDorayaki = dummyDorayaki;
   return (
-    <div className="px-8 lg:px-52 min-h-screen w-full pt-20 bg-pink-200">
+    <ContentWrapper BGcolor="pink-200">
       <h1 className="font-semibold text-3xl text-white underline">
         Pengaturan Dorayaki
       </h1>
@@ -80,7 +81,7 @@ const AllDorayakiPage = () => {
           />
         ))}
       </div>
-    </div>
+    </ContentWrapper>
   );
 };
 

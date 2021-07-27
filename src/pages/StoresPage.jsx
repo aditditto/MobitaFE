@@ -1,4 +1,5 @@
 import React from "react";
+import ContentWrapper from "../components/ContentWrapper";
 import StoreListItem from "../components/StoreListItem";
 
 const dummyStores = [
@@ -27,7 +28,7 @@ const dummyStores = [
 const StoresPage = () => {
   const fetchedStores = dummyStores;
   return (
-    <div className="px-8 lg:px-52 min-h-screen w-full pt-20 bg-blue-500">
+    <ContentWrapper BGcolor="blue-500">
       <h1 className="font-semibold text-3xl text-white underline">
         Pengaturan Toko
       </h1>
@@ -49,7 +50,7 @@ const StoresPage = () => {
           />
         ))}
       </div>
-    </div>
+    </ContentWrapper>
   );
 };
 

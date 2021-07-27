@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ContentWrapper from "../components/ContentWrapper";
 import StoreStockItem from "../components/StoreStockItem";
 import BuyDorayakiForm from "../components/BuyDorayakiForm";
 const fetchedDorayaki = [
@@ -55,7 +56,7 @@ const StoreDetail = () => {
       document.body.style.overflow === "hidden" ? "auto" : "hidden";
   };
   return (
-    <div className="bg-blue-500 min-h-screen py-20 px-6 lg:px-52">
+    <ContentWrapper BGcolor="blue-500">
       <button
         className="font-normal text-base transition rounded-md bg-white p-2
       mb-2 hover:bg-gray-300"
@@ -94,7 +95,7 @@ const StoreDetail = () => {
           ))}
         </div>
       </div>
-    </div>
+    </ContentWrapper>
   );
 };
 
