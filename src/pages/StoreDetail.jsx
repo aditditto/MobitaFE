@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import StoreStockItem from "../components/StoreStockItem";
+import BuyDorayakiForm from "../components/BuyDorayakiForm";
 const fetchedDorayaki = [
   {
     flavor: "ewwwww",
@@ -46,6 +47,13 @@ const fetchedDorayaki = [
 ];
 
 const StoreDetail = () => {
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => {
+    setShowModal(!showModal);
+
+    document.body.style.overflow =
+      document.body.style.overflow === "hidden" ? "auto" : "hidden";
+  };
   return (
     <div className="bg-blue-500 min-h-screen py-20 px-6 lg:px-52">
       <button
@@ -62,6 +70,18 @@ const StoreDetail = () => {
           <p>Provinsi Akhirat</p>
         </div>
         <h2 className="text-xl font-bold">Stok Dorayaki</h2>
+        <button
+          className="bg-white rounded-md border text-sm border-black font-normal p-2
+        transition hover:bg-gray-50"
+          onClick={toggleModal}
+        >
+          Tambah Dorayaki
+        </button>
+        {showModal && (
+          <div className="bg-black fixed z-50 inset-0 bg-opacity-50">
+            <BuyDorayakiForm toggleClose={toggleModal} />
+          </div>
+        )}
         <div className="flex flex-col">
           {fetchedDorayaki.map((dorayaki, index) => (
             <StoreStockItem
