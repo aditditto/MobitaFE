@@ -4,7 +4,7 @@ import ChangeMenu from "./ChangeMenu";
 import TransferMenu from "./TransferMenu";
 import _ from "lodash";
 
-const StockItemDropdown = ({ imgUrl, desc, _id }) => {
+const StockItemDropdown = ({ imgUrl, desc, _id, stock }) => {
   const [showMenu, setShowMenu] = useState(0);
   const toggleDesc = () => {
     setShowMenu(0);
@@ -19,21 +19,19 @@ const StockItemDropdown = ({ imgUrl, desc, _id }) => {
   const switchMenu = (menuCode) => {
     switch (menuCode) {
       case 0:
-        <Desc imgUrl={imgUrl} desc={desc} />;
-        break;
+        return <Desc imgUrl={imgUrl} desc={desc} />;
       case 1:
-        <ChangeMenu _id={_id} />;
-        break;
+        return <ChangeMenu _id={_id} stock={stock} />;
       case 2:
-        <TransferMenu _id={_id} />;
+        return <TransferMenu _id={_id} stock={stock} />;
       default:
         break;
     }
   };
 
   return (
-    <div className="">
-      <div className="flex mx-4 my-2">
+    <div className="h-full px-4 py-2">
+      <div className="flex">
         <button
           className={`bg-white p-2 border border-r-0 border-black font-normal text-sm 
         rounded-l-lg transition hover:bg-gray-100 ${
@@ -60,7 +58,7 @@ const StockItemDropdown = ({ imgUrl, desc, _id }) => {
           Transfer Stok
         </button>
       </div>
-      <div>{switchMenu(showMenu)}</div>
+      <div className="py-4">{switchMenu(showMenu)}</div>
     </div>
   );
 };

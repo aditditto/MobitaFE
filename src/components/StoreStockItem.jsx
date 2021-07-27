@@ -37,10 +37,15 @@ const StoreStockItem = ({ flavor, desc, imgUrl, stock, _id }) => {
       {/* Dropdown menu */}
       <div
         className={`${
-          expand ? "h-40" : "h-0"
+          expand ? "h-60" : "h-0"
         } bg-gray-100 rounded-lg mx-0.5 transition-all duration-500 ease-out overflow-hidden`}
       >
-        <StockItemDropdown imgUrl={imgUrl} desc={desc} _id={_id} />
+        <StockItemDropdown
+          imgUrl={imgUrl}
+          desc={desc}
+          _id={_id}
+          stock={stock}
+        />
       </div>
     </div>
   );
