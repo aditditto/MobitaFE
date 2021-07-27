@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ContentWrapper from "../components/ContentWrapper";
 import StoreStockItem from "../components/StoreStockItem";
 import BuyDorayakiForm from "../components/BuyDorayakiForm";
+import ButtonLink from "../components/ButtonLink";
+
 const fetchedDorayaki = [
   {
     flavor: "ewwwww",
@@ -57,12 +59,7 @@ const StoreDetail = () => {
   };
   return (
     <ContentWrapper BGcolor="blue-500">
-      <button
-        className="font-normal text-base transition rounded-md bg-white p-2
-      mb-2 hover:bg-gray-300"
-      >
-        Kembali
-      </button>
+      <ButtonLink linkTo="#" text="Kembali" />
       <div className="bg-white rounded-lg px-4 lg:px-20 py-8">
         <h1 className="text-3xl font-semibold mb-">Nama toko</h1>
         <div className="text-sm mb-12">
