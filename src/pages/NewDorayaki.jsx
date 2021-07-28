@@ -24,7 +24,7 @@ const NewDorayaki = () => {
     console.log(formData);
   };
   return (
-    <ContentWrapper BGcolor="pink-200">
+    <ContentWrapper classes="bg-pink-200">
       <ButtonLink linkTo="/dorayaki" text="Kembali" />
       <div className="bg-white rounded-lg px-4 lg:px-20 py-8">
         <h1 className="text-2xl font-bold mb-2">Pembuatan Dorayaki Baru</h1>

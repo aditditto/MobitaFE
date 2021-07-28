@@ -29,7 +29,7 @@ const dummyStores = [
 const StoresPage = () => {
   const fetchedStores = dummyStores;
   return (
-    <ContentWrapper BGcolor="blue-500">
+    <ContentWrapper classes="bg-blue-500">
       <h1 className="font-semibold text-3xl text-white underline">
         Pengaturan Toko
       </h1>

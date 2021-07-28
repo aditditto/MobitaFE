@@ -58,7 +58,7 @@ const dummyDorayaki = [
 const AllDorayakiPage = () => {
   const fetchedDorayaki = dummyDorayaki;
   return (
-    <ContentWrapper BGcolor="pink-200">
+    <ContentWrapper classes="bg-pink-200">
       <h1 className="font-semibold text-3xl text-white underline">
         Pengaturan Dorayaki
       </h1>

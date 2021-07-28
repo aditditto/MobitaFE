@@ -21,7 +21,7 @@ const NewStore = () => {
     console.log(formData);
   };
   return (
-    <ContentWrapper BGcolor="blue-500">
+    <ContentWrapper classes="bg-blue-500">
       <ButtonLink linkTo="/stores" text="Kembali" />
       <div className="bg-white rounded-lg px-4 lg:px-20 py-8">
         <h1 className="text-2xl font-bold mb-2">Pembuatan Toko Baru</h1>
