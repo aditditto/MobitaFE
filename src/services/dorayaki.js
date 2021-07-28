@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const apiURL = "http://localhost:5000";
+import { expressBE as apiURL } from "./apiURL";
 
 export const getAllDorayaki = async () => {
   const res = await axios.get(apiURL + "/dorayaki");
