@@ -1,6 +1,7 @@
 import React from "react";
 import DorayakiCard from "../components/DorayakiCard";
 import ContentWrapper from "../components/ContentWrapper";
+import { Link } from "react-router-dom";
 
 const dummyDorayaki = [
   {
@@ -61,13 +62,14 @@ const AllDorayakiPage = () => {
       <h1 className="font-semibold text-3xl text-white underline">
         Pengaturan Dorayaki
       </h1>
-      <div className="py-2 bg-red-400 rounded-t-md">
-        <button
-          className="block mx-auto bg-yellow-300 text-black text-lg border-2 font-semibold
+      <div className="flex justify-center py-2 bg-red-400 rounded-t-md">
+        <Link
+          to="/dorayaki/new"
+          className="inline-block bg-yellow-300 text-black text-lg border-2 font-semibold
     border-yellow-900 px-2 rounded-xl transition hover:bg-yellow-400"
         >
           Tambah Dorayaki
-        </button>
+        </Link>
       </div>
       <div className="flex flex-shrink-0 flex-wrap justify-around bg-white py-4 px-4 lg:px-20 rounded-b-3xl pb-4">
         {fetchedDorayaki.map((dorayaki, index) => (
