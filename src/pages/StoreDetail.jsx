@@ -4,6 +4,7 @@ import ContentWrapper from "../components/ContentWrapper";
 import StoreStockItem from "../components/StoreStockItem";
 import BuyDorayakiForm from "../components/BuyDorayakiForm";
 import ButtonLink from "../components/ButtonLink";
+import DeleteModal from "../components/DeleteModal";
 import { getOneStore } from "../services/stores";
 import { getStoreStocks } from "../services/stock";
 import { deleteStore } from "../services/stores";
@@ -67,27 +68,11 @@ const StoreDetail = () => {
           Hapus Toko
         </button>
         {alertDelete && (
-          <div className="bg-black fixed z-50 inset-0 bg-opacity-50">
-            <div
-              className="fixed bg-white z-50 top-1/2 left-1/2 w-1/2
-    transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-lg"
-            >
-              <p>Yakin ingin menghapus toko?</p>
-              <button
-                className="p-2 text-base font-normal border rounded-md mr-2
-              bg-red-200 hover:bg-red-500"
-                onClick={onConfirmDelete}
-              >
-                Ya
-              </button>
-              <button
-                className="p-2 text-base font-normal border rounded-md hover:bg-gray-50"
-                onClick={toggleDelete}
-              >
-                Tidak
-              </button>
-            </div>
-          </div>
+          <DeleteModal
+            objectName="toko"
+            onConfirm={onConfirmDelete}
+            onCancel={toggleDelete}
+          />
         )}
         <h2 className="text-xl font-bold">Stok Dorayaki</h2>
         <button
