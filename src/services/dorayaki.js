@@ -14,9 +14,14 @@ export const getOneDorayaki = async (_id) => {
 };
 
 export const newDorayaki = async (flavor, desc, img) => {
-  const res = await axios.post(`${apiURL}/dorayaki`, {
-    flavor: flavor,
-    description: desc,
+  const formdata = new FormData();
+  formdata.append("flavor", flavor);
+  formdata.append("description", desc);
+  formdata.append("image", img);
+  const res = await axios.post(`${apiURL}/dorayaki`, formdata, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
   });
   return [res.status, res.headers.location];
 };

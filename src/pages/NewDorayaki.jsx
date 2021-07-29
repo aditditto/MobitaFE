@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import ButtonLink from "../components/ButtonLink";
 import ContentWrapper from "../components/ContentWrapper";
+import { newDorayaki } from "../services/dorayaki";
 
 const NewDorayaki = () => {
-  const [formData, setFormData] = useState({
+  const history = useHistory();
+  const [formValues, setFormValues] = useState({
     flavor: "",
     desc: "",
     img: null,
@@ -12,16 +15,18 @@ const NewDorayaki = () => {
 
   const onFormChange = (event) => {
     const target = event.target;
-    setFormData({ ...formData, [target.name]: target.value });
+    setFormValues({ ...formValues, [target.name]: target.value });
   };
   const onImageUpload = (event) => {
     const target = event.target;
-    setFormData({ ...formData, img: target.files[0] });
+    setFormValues({ ...formValues, img: target.files[0] });
   };
   const submitForm = (event) => {
     event.preventDefault();
     setSubmitted(true);
-    console.log(formData);
+    newDorayaki(formValues.flavor, formValues.desc, formValues.img).then(() => {
+      history.push("/dorayaki");
+    }, console.log);
   };
   return (
     <ContentWrapper classes="bg-pink-200">
@@ -34,7 +39,7 @@ const NewDorayaki = () => {
             <input
               type="text"
               name="flavor"
-              value={formData.flavor}
+              value={formValues.flavor}
               onChange={onFormChange}
               className="bg-gray-50 border block text-sm my-1"
             />
@@ -44,7 +49,7 @@ const NewDorayaki = () => {
             <textarea
               type="textbox"
               name="desc"
-              value={formData.desc}
+              value={formValues.desc}
               onChange={onFormChange}
               className="bg-gray-50 border block text-sm my-1"
             />
