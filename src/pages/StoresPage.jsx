@@ -1,33 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ContentWrapper from "../components/ContentWrapper";
 import StoreListItem from "../components/StoreListItem";
 import { Link } from "react-router-dom";
-
-const dummyStores = [
-  {
-    name: "aaaaa",
-    address: { street: "here", district: "where", province: "Overthere" },
-  },
-  {
-    name: "aaaaa",
-    address: { street: "here", district: "where", province: "Overthere" },
-  },
-  {
-    name: "aaaaa",
-    address: { street: "here", district: "where", province: "Overthere" },
-  },
-  {
-    name: "aaaaa",
-    address: { street: "here", district: "where", province: "Overthere" },
-  },
-  {
-    name: "aaaaa",
-    address: { street: "here", district: "where", province: "Overthere" },
-  },
-];
+import { getAllStores } from "../services/stores";
 
 const StoresPage = () => {
-  const fetchedStores = dummyStores;
+  const [fetchedStores, setFetchedStores] = useState([]);
+
+  useEffect(() => {
+    getAllStores().then((stores) => setFetchedStores(stores), console.log);
+  }, []);
+
   return (
     <ContentWrapper classes="bg-blue-500">
       <h1 className="font-semibold text-3xl text-white underline">

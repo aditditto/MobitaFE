@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import ContentWrapper from "../components/ContentWrapper";
 import ButtonLink from "../components/ButtonLink";
+import { newStore } from "../services/stores";
+import { useHistory } from "react-router";
 
 const NewStore = () => {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     name: "",
     street: "",
@@ -18,7 +21,14 @@ const NewStore = () => {
   const submitForm = (event) => {
     event.preventDefault();
     setSubmitted(true);
-    console.log(formData);
+    newStore(
+      formData.name,
+      formData.street,
+      formData.district,
+      formData.province
+    ).then(() => {
+      history.push("/stores");
+    }, console.log);
   };
   return (
     <ContentWrapper classes="bg-blue-500">

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const StoreListItem = ({ name, address, _id }) => {
   return (
@@ -7,12 +8,13 @@ const StoreListItem = ({ name, address, _id }) => {
         {name}
         <small className="block lg:inline lg:ml-4 text-gray-600">{`${address.district}, ${address.province}`}</small>
       </p>
-      <button
+      <Link
+        to={`/stores/show/${_id}`}
         className="transition bg-white px-2 rounded-md border
   border-black text-base text-blue-900 font-normal hover:text-white hover:bg-blue-800"
       >
         Atur
-      </button>
+      </Link>
     </div>
   );
 };
