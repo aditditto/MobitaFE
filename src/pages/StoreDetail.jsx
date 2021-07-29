@@ -84,16 +84,16 @@ const StoreDetail = () => {
         </button>
         {showModal && (
           <div className="bg-black fixed z-50 inset-0 bg-opacity-50">
-            <BuyDorayakiForm toggleClose={toggleModal} />
+            <BuyDorayakiForm toggleClose={toggleModal} storeID={ID} />
           </div>
         )}
         <div className="flex flex-col">
           {stocks.map((dorayaki, index) => (
             <StoreStockItem
               flavor={dorayaki.flavor}
-              desc={dorayaki.desc}
+              desc={dorayaki.description}
               imgUrl={dorayaki.imgUrl}
-              stock={dorayaki.stock}
+              stock={dorayaki.quantity}
               key={index}
             />
           ))}
