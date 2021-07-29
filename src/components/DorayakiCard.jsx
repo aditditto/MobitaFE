@@ -1,6 +1,6 @@
 import React from "react";
 
-const StoreDorayaki = ({ flavor, desc, imgUrl, _id, classes }) => {
+const StoreDorayaki = ({ flavor, desc, imgUrl, classes }) => {
   return (
     <div
       className={
