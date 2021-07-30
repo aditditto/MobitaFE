@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ContentWrapper from "../components/ContentWrapper";
 import StoreListItem from "../components/StoreListItem";
-import { Link } from "react-router-dom";
+import LoadingPlaceholder from "../components/LoadingPlaceholder";
 import { getAllStores } from "../services/stores";
 
 const StoresPage = () => {
   const [fetchedStores, setFetchedStores] = useState([]);
+  const [hasFetched, setHasFetched] = useState(false);
 
   useEffect(() => {
-    getAllStores().then((stores) => setFetchedStores(stores), console.log);
+    getAllStores().then((stores) => {
+      setHasFetched(true);
+      setFetchedStores(stores);
+    }, console.log);
   }, []);
 
   return (
@@ -26,14 +31,18 @@ const StoresPage = () => {
         </Link>
       </div>
       <div className="bg-white py-4 px-4 lg:px-20 rounded-b-3xl pb-4">
-        {fetchedStores.map((store, index) => (
-          <StoreListItem
-            name={store.name}
-            address={store.address}
-            _id={store._id}
-            key={index}
-          />
-        ))}
+        {!hasFetched ? (
+          <LoadingPlaceholder />
+        ) : (
+          fetchedStores.map((store, index) => (
+            <StoreListItem
+              name={store.name}
+              address={store.address}
+              _id={store._id}
+              key={index}
+            />
+          ))
+        )}
       </div>
     </ContentWrapper>
   );
