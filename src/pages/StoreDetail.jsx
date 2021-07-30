@@ -100,6 +100,7 @@ const StoreDetail = () => {
               stock={dorayaki.quantity}
               storeID={ID}
               stockID={dorayaki._id}
+              dorayakiID={dorayaki.dorayakiID}
               key={index}
             />
           ))}

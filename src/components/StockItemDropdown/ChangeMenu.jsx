@@ -13,6 +13,7 @@ const ChangeMenu = ({ stock, storeID, stockID }) => {
       window.location.reload();
     }, console.log);
   };
+
   return (
     <fieldset>
       <legend>Masukkan jumlah dorayaki</legend>

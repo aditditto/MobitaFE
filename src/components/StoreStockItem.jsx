@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import StockItemDropdown from "./StockItemDropdown/StockItemDropdown";
 
-const StoreStockItem = ({ flavor, desc, imgUrl, stock, storeID, stockID }) => {
+const StoreStockItem = ({
+  flavor,
+  desc,
+  imgUrl,
+  stock,
+  storeID,
+  stockID,
+  dorayakiID,
+}) => {
   const [expand, setExpand] = useState(false);
   const toggleExpand = () => setExpand(!expand);
   return (
@@ -46,6 +54,7 @@ const StoreStockItem = ({ flavor, desc, imgUrl, stock, storeID, stockID }) => {
           stock={stock}
           storeID={storeID}
           stockID={stockID}
+          dorayakiID={dorayakiID}
         />
       </div>
     </div>

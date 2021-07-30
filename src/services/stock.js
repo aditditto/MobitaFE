@@ -31,3 +31,26 @@ export const deleteStock = async (storeID, stockID) => {
   );
   return res.status;
 };
+
+export const transferStock = async (
+  originID,
+  targetID,
+  stockID,
+  dorayakiID,
+  qty,
+  currentQty
+) => {
+  const targetStocks = await getStoreStocks(targetID);
+  const targetStock = targetStocks.find(
+    (stock) => stock.dorayakiID === dorayakiID
+  );
+
+  const setOrigin = setStockQuantity(originID, stockID, currentQty - qty);
+  const setTarget = targetStock
+    ? setStockQuantity(targetID, targetStock._id, targetStock.quantity + qty)
+    : newStock(targetID, dorayakiID, qty);
+
+  const [res1, res2] = await Promise.all([setOrigin, setTarget]);
+
+  return [res1.status, res2.status];
+};
