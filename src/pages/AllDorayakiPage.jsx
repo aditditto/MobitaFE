@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DorayakiCard from "../components/DorayakiCard";
 import ContentWrapper from "../components/ContentWrapper";
+import LoadingPlaceholder from "../components/LoadingPlaceholder";
 import { getAllDorayaki } from "../services/dorayaki";
 
 const AllDorayakiPage = () => {
   const [fetchedDorayaki, setFetchedDorayaki] = useState([]);
+  const [hasFetched, setHasFetched] = useState(false);
 
   useEffect(() => {
-    getAllDorayaki().then(setFetchedDorayaki, console.log);
+    getAllDorayaki().then((dorayakis) => {
+      setHasFetched(true);
+      setFetchedDorayaki(dorayakis);
+    }, console.log);
   }, []);
 
   return (
@@ -26,17 +31,21 @@ const AllDorayakiPage = () => {
         </Link>
       </div>
       <div className="flex flex-shrink-0 flex-wrap justify-around bg-white py-4 px-4 lg:px-20 rounded-b-3xl pb-4">
-        {fetchedDorayaki.map((dorayaki, index) => (
-          <Link to={`/dorayaki/show/${dorayaki._id}`}>
-            <DorayakiCard
-              flavor={dorayaki.flavor}
-              imgUrl={dorayaki.imgUrl}
-              desc={dorayaki.description}
-              key={index}
-              classes="mb-4"
-            />
-          </Link>
-        ))}
+        {!hasFetched ? (
+          <LoadingPlaceholder />
+        ) : (
+          fetchedDorayaki.map((dorayaki, index) => (
+            <Link to={`/dorayaki/show/${dorayaki._id}`}>
+              <DorayakiCard
+                flavor={dorayaki.flavor}
+                imgUrl={dorayaki.imgUrl}
+                desc={dorayaki.description}
+                key={index}
+                classes="mb-4"
+              />
+            </Link>
+          ))
+        )}
       </div>
     </ContentWrapper>
   );
