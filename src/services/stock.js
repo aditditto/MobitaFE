@@ -45,6 +45,8 @@ export const transferStock = async (
     (stock) => stock.dorayakiID === dorayakiID
   );
 
+  qty = Number(qty);
+
   const setOrigin = setStockQuantity(originID, stockID, currentQty - qty);
   const setTarget = targetStock
     ? setStockQuantity(targetID, targetStock._id, targetStock.quantity + qty)
