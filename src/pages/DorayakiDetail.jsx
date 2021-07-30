@@ -1,14 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useHistory } from "react-router";
 import ContentWrapper from "../components/ContentWrapper";
 import ButtonLink from "../components/ButtonLink";
+import DeleteModal from "../components/DeleteModal";
+import { getOneDorayaki, deleteDorayaki } from "../services/dorayaki";
 
 const DorayakiDetail = () => {
-  const dorayaki = {
-    flavor: "YummyYummy",
-    desc: "Yummy yummy in my tummy Yummy yummy in my tummy Yummy yummy in my tummy Yummy yummy in my tummy Yummy yummy in my tummy",
-    imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/7/7f/Dorayaki_001.jpg",
+  const { ID } = useParams();
+  const history = useHistory();
+  const [alertDelete, setAlertDelete] = useState(false);
+  const [dorayaki, setDorayaki] = useState({
+    flavor: "Loading...",
+    description: "",
+    imgUrl: "",
+  });
+
+  useEffect(() => {
+    getOneDorayaki(ID).then(setDorayaki, console.log);
+  }, []);
+
+  const toggleDelete = () => {
+    setAlertDelete(!alertDelete);
+
+    document.body.style.overflow =
+      document.body.style.overflow === "hidden" ? "auto" : "hidden";
   };
+
+  const onConfirmDelete = () => {
+    deleteDorayaki(ID).then(() => {
+      history.push("/dorayaki");
+    }, console.log);
+  };
+
   return (
     <ContentWrapper classes="bg-pink-200">
       <ButtonLink linkTo="/dorayaki" text="Kembali" />
@@ -20,14 +43,22 @@ const DorayakiDetail = () => {
           alt="gambar dorayaki"
           className="w-4/5 mx-auto"
         />
-        <p className="text-justify my-4">Deskripsi: {dorayaki.desc}</p>
+        <p className="text-justify my-4">Deskripsi: {dorayaki.description}</p>
         <div className="flex justify-center">
-          <ButtonLink linkTo="#" text="Edit" classes="bg-gray-100 mr-4" />
-          <ButtonLink
-            linkTo="#"
-            text="Hapus"
-            classes="bg-red-400 hover:bg-red-700"
-          />
+          <button
+            className="bg-red-200 rounded-md border text-sm border-black font-normal p-2
+        transition hover:bg-red-500"
+            onClick={toggleDelete}
+          >
+            Hapus Dorayaki
+          </button>
+          {alertDelete && (
+            <DeleteModal
+              objectName="dorayaki"
+              onCancel={toggleDelete}
+              onConfirm={onConfirmDelete}
+            />
+          )}
         </div>
       </div>
     </ContentWrapper>
