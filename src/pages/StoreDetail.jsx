@@ -84,7 +84,11 @@ const StoreDetail = () => {
         </button>
         {showModal && (
           <div className="bg-black fixed z-50 inset-0 bg-opacity-50">
-            <BuyDorayakiForm toggleClose={toggleModal} storeID={ID} />
+            <BuyDorayakiForm
+              toggleClose={toggleModal}
+              storeID={ID}
+              ownedStockIDs={stocks.map((stock) => stock.dorayakiID)}
+            />
           </div>
         )}
         <div className="flex flex-col">

@@ -3,7 +3,7 @@ import DorayakiCard from "./DorayakiCard";
 import { getAllDorayaki } from "../services/dorayaki";
 import { newStock } from "../services/stock";
 
-const BuyDorayakiForm = ({ toggleClose, storeID }) => {
+const BuyDorayakiForm = ({ toggleClose, storeID, ownedStockIDs }) => {
   const [fetchedDorayaki, setFetchedDorayaki] = useState([]);
   const [selectedID, setSelectedID] = useState("");
   const [quantity, setQuantity] = useState(1);
@@ -11,6 +11,11 @@ const BuyDorayakiForm = ({ toggleClose, storeID }) => {
 
   useEffect(() => {
     getAllDorayaki().then((dorayakis) => {
+      dorayakis = dorayakis.filter(
+        (dorayaki) => !ownedStockIDs.includes(dorayaki._id)
+      );
+      console.log(ownedStockIDs);
+      console.log(dorayakis);
       setFetchedDorayaki(dorayakis);
       setSelectedID(dorayakis[0]._id);
     }, console.log);
@@ -59,11 +64,12 @@ const BuyDorayakiForm = ({ toggleClose, storeID }) => {
       />
       <button
         type="submit"
-        disabled={submitted}
+        disabled={submitted || fetchedDorayaki.length === 0}
         onClick={handleSubmit}
         className={
           "block font-normal text-base border p-2 rounded-md bg-gray-50 hover:bg-gray-200 " +
-          (submitted && "cursor-not-allowed opacity-50")
+          ((submitted || fetchedDorayaki.length === 0) &&
+            "cursor-not-allowed opacity-50")
         }
       >
         Submit
