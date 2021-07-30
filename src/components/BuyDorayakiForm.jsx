@@ -32,14 +32,14 @@ const BuyDorayakiForm = ({ toggleClose, storeID, ownedStockIDs }) => {
 
   return (
     <div
-      className="fixed bg-white z-50 top-1/2 left-1/2 lg:w-1/2
+      className="fixed bg-white z-50 top-1/2 left-1/2 md:w-3/4 lg:w-1/2
     transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-lg"
     >
       <button className="absolute right-4 top-4" onClick={toggleClose}>
         x
       </button>
       <p className="lg:text-lg font-bold mb-4">Tambah Varian Dorayaki</p>
-      <div className="md:flex h-72 overflow-auto justify-between w-100 p-4">
+      <div className="md:flex md:flex-wrap md:justify-evenly lg:justify-between h-72 overflow-auto w-100 p-4">
         {fetchedDorayaki.map((dorayaki, index) => (
           <div onClick={() => setSelectedID(dorayaki._id)} key={index}>
             <DorayakiCard
