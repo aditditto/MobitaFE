@@ -4,7 +4,7 @@ import ChangeMenu from "./ChangeMenu";
 import TransferMenu from "./TransferMenu";
 import _ from "lodash";
 
-const StockItemDropdown = ({ imgUrl, desc, _id, stock }) => {
+const StockItemDropdown = ({ imgUrl, desc, stock, storeID, stockID }) => {
   const [showMenu, setShowMenu] = useState(0);
   const toggleDesc = () => {
     setShowMenu(0);
@@ -21,9 +21,9 @@ const StockItemDropdown = ({ imgUrl, desc, _id, stock }) => {
       case 0:
         return <Desc imgUrl={imgUrl} desc={desc} />;
       case 1:
-        return <ChangeMenu _id={_id} stock={stock} />;
+        return <ChangeMenu stock={stock} storeID={storeID} stockID={stockID} />;
       case 2:
-        return <TransferMenu _id={_id} stock={stock} />;
+      // return <TransferMenu _id={_id} stock={stock} />;
       default:
         break;
     }

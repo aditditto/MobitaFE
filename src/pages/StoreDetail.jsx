@@ -98,6 +98,8 @@ const StoreDetail = () => {
               desc={dorayaki.description}
               imgUrl={dorayaki.imgUrl}
               stock={dorayaki.quantity}
+              storeID={ID}
+              stockID={dorayaki._id}
               key={index}
             />
           ))}

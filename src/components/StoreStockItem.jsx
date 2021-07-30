@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StockItemDropdown from "./StockItemDropdown/StockItemDropdown";
 
-const StoreStockItem = ({ flavor, desc, imgUrl, stock, _id }) => {
+const StoreStockItem = ({ flavor, desc, imgUrl, stock, storeID, stockID }) => {
   const [expand, setExpand] = useState(false);
   const toggleExpand = () => setExpand(!expand);
   return (
@@ -43,8 +43,9 @@ const StoreStockItem = ({ flavor, desc, imgUrl, stock, _id }) => {
         <StockItemDropdown
           imgUrl={imgUrl}
           desc={desc}
-          _id={_id}
           stock={stock}
+          storeID={storeID}
+          stockID={stockID}
         />
       </div>
     </div>
