@@ -1,43 +1,52 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams,
+} from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import Hero from "./pages/Hero";
+import AllDorayakiPage from "./pages/AllDorayakiPage";
+import StoresPage from "./pages/StoresPage";
+import DorayakiDetail from "./pages/DorayakiDetail";
+import StoreDetail from "./pages/StoreDetail";
+import NewDorayaki from "./pages/NewDorayaki";
+import NewStore from "./pages/NewStore";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div>
+      <Navbar />
+
+      <Switch>
+        <Route path="/dorayaki/show/:ID">
+          <DorayakiDetail />
+        </Route>
+        <Route path="/dorayaki/new">
+          <NewDorayaki />
+        </Route>
+        <Route path="/dorayaki">
+          <AllDorayakiPage />
+        </Route>
+        <Route path="/stores/show/:ID">
+          <StoreDetail />
+        </Route>
+        <Route path="/stores/new">
+          <NewStore />
+        </Route>
+        <Route path="/stores">
+          <StoresPage />
+        </Route>
+        <Route path="/">
+          <Hero />
+        </Route>
+      </Switch>
     </div>
   );
 }
